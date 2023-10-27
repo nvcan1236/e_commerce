@@ -1,0 +1,68 @@
+:root {
+  --primary-color: #276678;
+  --secondary-color: #1687A7;
+  --dark-bg: #D3E0EA;
+  --light-bg: #F6F5F5;
+
+}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Inter', sans-serif ;
+  color: #000;
+}
+
+.noti {
+  background-color: var(--dark-bg);
+  color: var(--primary-color);
+}
+
+main {
+  margin-top: 32px;
+  padding: 0 40px;
+  font-weight: 500;
+}
+
+/* nav bar */
+.navbar {
+  background-color: var(--light-bg);
+}
+
+.navbar .search-btn {
+  background-color: var(--primary-color);
+  color: var(--light-bg);
+  padding-top: 8px;
+}
+.navbar .nav-link {
+  color: #000;
+}
+
+.banner {
+  display: flex;
+  background-color: #fbf0e4;
+  padding: 60px 80px;
+}
+
+.banner .text {
+  width: 50%;
+}
+
+.banner .text h3{
+  color: var(--primary-color);
+  line-height: 1.5;
+  font-weight: 600;
+  font-size: 32px;
+
+}
+
+.banner .btn {
+  padding: 4px 24px;
+  background-color: var(--primary-color);
+  color: var(--light-bg);
+  border-radius: 999px;
+  margin-top: 16px;
+}
