@@ -1,13 +1,14 @@
 from flask import Flask
 from urllib.parse import quote
 
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
-app.config.from_mapping(
-    SECRET_KEY='ABSIKJDABFABJASCAS',
-    SQLALCHEMY_DATABASE_URI='mysql+pymysql://root:%s@localhost/e_commerce' % quote('Myca@1236'),
-    SQLALCHEMY_TRACK_MODIFICATION=True,
-)
+app.secret_key = '21137affa59a4dd08b708dcf106c724f9'
 
-# db = SQLAlchemy(app=app)
+app.config["SQLALCHEMY_DATABASE_URI"] ="mysql+pymysql://root:%s@localhost/e_commerce?charset=utf8mb4" % quote('GOT123456')
+
+
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True
+db = SQLAlchemy(app=app)
