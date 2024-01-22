@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}
+Details
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <h1>{{ product.name }} - Product Detail</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{ product.image }}" class="img-fluid" alt="{{ product.name }}">
+        </div>
+        <div class="col-md-6">
+            <p>{{ product.description }}</p>
+            <p>Price: ${{ product.price }}</p>
+            <p>Seller: <a href="#">{{ product.seller.username }}</a></p>
+            <div style="padding-bottom: 20px">
+                <button type="button" class="btn btn-primary" onclick="addToCart('{{ product.id }}')">Add to cart
+                </button>
+                <button type="button" class="btn btn-success" onclick="buyNow('{{ product.id }}')">Buy now</button>
+            </div>
+            <a href="{{ url_for('index') }}" class="btn btn-primary">Back to Product List</a>
+        </div>
+
+
+    </div>
+</div>
+{% endblock %}

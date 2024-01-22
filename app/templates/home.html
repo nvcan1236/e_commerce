@@ -1,15 +1,41 @@
 {% extends 'base.html' %}
 {% block title %}
-  Home Page
+Home Page
 {% endblock title %}
 {% block content %}
-  <div class="banner">
-   <div class="text">
-      <h3>
-        Grab Upto 50% off <br>On Selected Product
-      </h3>
-      <button class="btn">Buy Now</button>
+<div class="banner">
+    <div class="text">
+        <h3>
+            Grab Upto 50% off <br>On Selected Product
+        </h3>
+        <button class="btn">Buy Now</button>
     </div>
     <img src="" alt="">
-   </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        {% for product in products %}
+        <div style="padding:10px" class="col-md-3">
+            <div style="padding:20px" class="card mb-4">
+                <a style="text-decoration: none" href="{{ url_for('product_detail', product_id=product.id) }}"
+                   class="card-link">
+                    <img src="{{ product.image }}" class="card-img-top" alt="{{ product.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text">{{ product.description }}</p>
+                        <p class="card-text">Price: ${{ product.price }}</p>
+                        <p class="card-text">Seller: {{product.seller.username}}</p></div>
+                </a>
+                <div align="center">
+                    <button type="button" class="btn btn-primary" onclick="addToCart('{{ product.id }}')">Add to cart
+                    </button>
+                    <button type="button" class="btn btn-success" onclick="buyNow('{{ product.id }}')">Buy now</button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
 {% endblock content %} 

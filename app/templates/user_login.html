@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}
+User Login
+{% endblock title %}
+{% block content %}
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .login-container {
+        max-width: 400px;
+        margin: auto;
+        margin-top: 100px;
+    }
+
+
+</style>
+</head>
+<body>
+
+<div class="container login-container">
+    <h2 class="text-center mb-4">Đăng nhập</h2>
+    <form method="POST" action="{{ url_for('user_login') }}">
+        <div class="mb-3">
+            <label for="username" class="form-label">Tên đăng nhập</label>
+            <input type="text" name="username" class="form-control" id="username" placeholder="Nhập tên đăng nhập"
+                   required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Mật khẩu</label>
+            <input name="password" type="password" class="form-control" id="password" placeholder="Nhập mật khẩu"
+                   required>
+        </div>
+        <div class="mb-3">
+            <label for="role" class="form-label">Vai trò</label>
+            <select name="role" class="form-control" id="role" required>
+                {% for role_enum_value in user_role_enum_values %}
+                <option value="{{ role_enum_value.value }}">{{ role_enum_value.name }}</option>
+                {% endfor %}
+
+            </select>
+        </div>
+        <button type="button" class="btn btn-primary btn-block" onclick="login()">Đăng nhập</button>
+    </form>
+</div>
+{% endblock %}
