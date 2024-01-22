@@ -1,30 +1,26 @@
 import hashlib
 
-from sqlalchemy import Column, Integer, String, ForeignKey, Boolean, DateTime, Float, Enum, MetaData
+from sqlalchemy import Column, Integer, String, ForeignKey, Boolean, DateTime, Float, Enum
 from sqlalchemy.orm import relationship
 from app import db, app
 from datetime import datetime
 from flask_login import UserMixin
 from enum import Enum as MyEnum
 
-metadata = MetaData()
-
 
 class UserRoleEnum(MyEnum):
-    USER = "SHOPPER"
-    SELLER = "SHOP"
+    SHOPPER = "SHOPPER"
+    SHOP = "SHOP"
 
 
 class Base1(db.Model):
     __abstract__ = True
-    __table_args__ = {'extend_existing': True}
 
     id = Column(Integer, primary_key=True, autoincrement=True)
 
 
 class Base2(db.Model):
     __abstract__ = True
-    __table_args__ = {'extend_existing': True}
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String(50), nullable=False, unique=True)
@@ -45,7 +41,7 @@ class User(Base1, UserMixin):
     password = Column(String(50), nullable=False)
     avatar = Column(String(100),
                     default='https://media.dolenglish.vn/PUBLIC/MEDIA/9590ffca-47b8-43ef-98a7-742ca207ca23.jpg')
-    user_role = Column(Enum(UserRoleEnum), default=UserRoleEnum.USER)
+    user_role = Column(Enum(UserRoleEnum), default=UserRoleEnum.SHOPPER)
 
 
 class Seller(User):
@@ -84,24 +80,24 @@ if __name__ == '__main__':
     with app.app_context():
         db.create_all()
 
-        # c1 = Category(name='Laptop')
-        # c2 = Category(name='Smart Phone')
-        # c3 = Category(name='Tablet')
-        # db.session.add_all([c1, c2, c3])
-        #
-        # customer1 = Customer(last_name='Duong', first_name='Van Khanh', email='duongvan845@gmail.com',
-        #                      phone='0123456789', username='khanh',
-        #                      password=str(hashlib.md5('khanh'.encode('utf-8')).hexdigest()),
-        #                      user_role=UserRoleEnum.USER)
-        # seller1 = Seller(last_name='Nguyen', first_name='Van Canh', email='canh@gmail.com', phone='0123456788',
-        #                  username='canh', password=str(hashlib.md5('canh'.encode('utf-8')).hexdigest()),
-        #                  user_role=UserRoleEnum.SELLER)
-        # review1 = Review(review='San pham tot qua', customer_id=1)
-        # product1 = Product(name='Iphone 15 Pro Max', description='Designed by Apple', price=20000000,
-        #                    image='https://cdn.viettelstore.vn/Images/Product/ProductImage/1349547788.jpeg',
-        #                    category_id=2, seller_id=1)
-        # product2 = Product(name='Ipad gen 9', description='Designed by Apple', price=7000000,
-        #                    image='https://fptshop.com.vn/Uploads/Originals/2022/12/6/638059452164293984_ipad-gen-9-wifi-4g-dd.jpg',
-        #                    category_id=3, seller_id=1)
-        # db.session.add_all([product1, product2, customer1, seller1, review1])
-        # db.session.commit()
+        c1 = Category(name='Laptop')
+        c2 = Category(name='Smart Phone')
+        c3 = Category(name='Tablet')
+        db.session.add_all([c1, c2, c3])
+
+        customer1 = Customer(last_name='Duong', first_name='Van Khanh', email='duongvan845@gmail.com',
+                             phone='0123456789', username='khanh',
+                             password=str(hashlib.md5('khanh'.encode('utf-8')).hexdigest()),
+                             user_role=UserRoleEnum.SHOPPER)
+        seller1 = Seller(last_name='Nguyen', first_name='Van Canh', email='canh@gmail.com', phone='0123456788',
+                         username='canh', password=str(hashlib.md5('canh'.encode('utf-8')).hexdigest()),
+                         user_role=UserRoleEnum.SHOP)
+        review1 = Review(review='San pham tot qua', customer_id=1)
+        product1 = Product(name='Iphone 15 Pro Max', description='Designed by Apple', price=20000000,
+                           image='https://cdn.viettelstore.vn/Images/Product/ProductImage/1349547788.jpeg',
+                           category_id=2, seller_id=1)
+        product2 = Product(name='Ipad gen 9', description='Designed by Apple', price=7000000,
+                           image='https://fptshop.com.vn/Uploads/Originals/2022/12/6/638059452164293984_ipad-gen-9-wifi-4g-dd.jpg',
+                           category_id=3, seller_id=1)
+        db.session.add_all([product1, product2, customer1, seller1, review1])
+        db.session.commit()
