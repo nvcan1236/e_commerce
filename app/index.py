@@ -25,8 +25,8 @@ def user_login():
     if request.method.__eq__('POST'):
         username = request.form.get('username')
         password = request.form.get('password')
-        user_role_enum_values = UserRoleEnum.__members__.values()
 
+    user_role_enum_values = UserRoleEnum.__members__.values()
     return render_template('user_login.html', user_role_enum_values=user_role_enum_values)
 
 

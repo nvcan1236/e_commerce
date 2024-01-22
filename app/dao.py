@@ -1,4 +1,4 @@
-from models import Category, Product, Seller
+from app.models import Category, Product, Seller
 from app import db
 
 
@@ -10,7 +10,6 @@ def load_product(kw):
     products = Product.query
     if kw:
         products = products.filter(Product.name.contains(kw))
-
 
     return products.all()
 
