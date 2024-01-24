@@ -28,7 +28,7 @@ Home Page
                         <p class="card-text">Seller: {{product.seller.username}}</p></div>
                 </a>
                 <div align="center">
-                    <button type="button" class="btn btn-primary" onclick="addToCart('{{ product.id }}')">Add to cart
+                    <button type="button" class="btn btn-primary" onclick="addToCart({{product.id}}, '{{product.name}}', {{product.price}})">Add to cart
                     </button>
                     <button type="button" class="btn btn-success" onclick="buyNow('{{ product.id }}')">Buy now</button>
                 </div>
@@ -37,5 +37,5 @@ Home Page
         {% endfor %}
     </div>
 </div>
-
+<script src=" {{ url_for('static', filename='js/cart.js') }}"></script>
 {% endblock content %} 
