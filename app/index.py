@@ -1,4 +1,4 @@
-import login as login
+# import login as login
 from flask_login import logout_user, login_user
 from app import app, dao, login, utils
 from flask import render_template, request, session, redirect, url_for, jsonify
@@ -12,8 +12,11 @@ def add_cart():
         cart = {}
     data = request.json
     id = str(data.get("id"))
+
     if id in cart:
         cart[id]['quantity'] = cart[id]['quantity'] + 1
+        session['cart'] = cart
+
     else:
         cart[id] = {
             "id": id,
@@ -22,6 +25,7 @@ def add_cart():
             "quantity": 1
         }
         session['cart'] = cart
+
     return jsonify(utils.count_cart(cart))
 
 
