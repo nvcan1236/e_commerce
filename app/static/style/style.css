@@ -1,23 +1,7 @@
-:root {
-  --primary-color: #276678;
-  --secondary-color: #1687A7;
-  --dark-bg: #D3E0EA;
-  --light-bg: #F6F5F5;
 
-}
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap');
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-body {
-  font-family: 'Inter', sans-serif ;
-  color: #000;
-}
 
 .noti {
-  background-color: var(--dark-bg);
+  background-color: var(--light1);
   color: var(--primary-color);
 }
 
@@ -29,13 +13,27 @@ main {
 
 /* nav bar */
 .navbar {
-  background-color: var(--light-bg);
+  background-color: var(--light2);
+}
+
+.search-form {
+  display: flex;
+  align-items: stretch ;
+}
+
+.search-form input {
+  height: 40px;
+  min-width: 240px;
+  border-radius: 8px 0 0 8px;
+  padding: 0 30px;
 }
 
 .navbar .search-btn {
   background-color: var(--primary-color);
-  color: var(--light-bg);
+  color: var(--light2);
   padding-top: 8px;
+  border-radius: 0 8px 8px 0;
+  height: 40px;
 }
 .navbar .nav-link {
   color: #000;
@@ -62,7 +60,38 @@ main {
 .banner .btn {
   padding: 4px 24px;
   background-color: var(--primary-color);
-  color: var(--light-bg);
+  color: var(--light1);
   border-radius: 999px;
   margin-top: 16px;
+}
+
+header .nav-item {
+  padding: 0px 16px;
+}
+
+
+.product-actions {
+    /*flex: 1;*/
+    margin-top: auto;
+    display: flex;
+    gap: 8px;
+
+}
+
+
+
+.product-list .card-body{
+    padding: 8px 0;
+    margin-top: 12px;
+}
+
+.product-list .card {
+    border: 1px solid var(--primary-color);
+    height: 100%;
+    border-radius: 8px;
+}
+.product-name {
+    text-transform: uppercase;
+    color: var(--primary-color);
+    font-weight: 600;
 }

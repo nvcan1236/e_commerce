@@ -13,24 +13,25 @@ Home Page
     <img src="" alt="">
 </div>
 
-<div class="container">
+<div class="container product-list">
     <div class="row">
+        <h3 class="mt-5">Product list</h3>
         {% for product in products %}
-        <div style="padding:10px" class="col-md-3">
-            <div style="padding:20px" class="card mb-4">
+        <div style="padding:10px" class="col-sm-6 col-lg-4 col-xl-3">
+            <div style="padding:20px" class="card">
                 <a style="text-decoration: none" href="{{ url_for('product_detail', product_id=product.id) }}"
                    class="card-link">
-                    <img src="{{ product.image }}" class="card-img-top" alt="{{ product.name }}">
+                    <img src="{{ product.image }}" class="card-img-top product-img" alt="{{ product.name }}">
                     <div class="card-body">
-                        <h5 class="card-title">{{ product.name }}</h5>
+                        <h5 class="card-title product-name">{{ product.name }}</h5>
                         <p class="card-text">{{ product.description }}</p>
                         <p class="card-text">Price: ${{ product.price }}</p>
                         <p class="card-text">Seller: {{product.seller.username}}</p></div>
                 </a>
-                <div align="center">
-                    <button type="button" class="btn btn-primary" onclick="addToCart({{product.id}}, '{{product.name}}', {{product.price}})">Add to cart
+                <div class="product-actions">
+                    <button type="button" class="btn secondary" onclick="addToCart({{product.id}}, '{{product.name}}', {{product.price}})">Add to cart
                     </button>
-                    <button type="button" class="btn btn-success" onclick="buyNow('{{ product.id }}')">Buy now</button>
+                    <button type="button" class="btn primary" onclick="buyNow('{{ product.id }}')">Buy now</button>
                 </div>
             </div>
         </div>

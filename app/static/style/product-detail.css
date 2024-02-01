@@ -1,0 +1,26 @@
+.product-list .card-text {
+    color: #333;
+    font-size: 14px;
+    margin: 0;
+    padding: 4px 0;
+}
+
+.detail-seller a {
+    text-decoration: none;
+    color: #333333;
+}
+
+.detail-info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.detail-actions {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

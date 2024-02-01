@@ -19,26 +19,36 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!--    CSS-->
+    <link
+            rel="stylesheet"
+            href="{{url_for('static', filename='style/base.css')}}"
+    />
     <link
             rel="stylesheet"
             href="{{url_for('static', filename='style/style.css')}}"
     />
+    <link
+            rel="stylesheet"
+            href="{{url_for('static', filename='style/product-detail.css')}}"
+    />
 
-    <title>{% block title %}
-
-        {% endblock title %}</title>
+    <title>{% block title %} {% endblock title %}</title>
 </head>
 <body>
 <div class="container-fluid px-0">
-    <div class="noti text-center py-1 fixed-top">
-        E-commerce - Nguyen Van Canh - Notification
-    </div>
+    <!--    <div class="noti text-center py-1 fixed-top">-->
+    <!--        E-commerce - Nguyen Van Canh - Notification-->
+    <!--    </div>-->
     <main>
         <header>
             <nav class="navbar navbar-expand-sm bg-light">
                 <div class="container-fluid">
                     <!-- Links -->
                     <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Category</a>
                         </li>
@@ -49,7 +59,7 @@
                             <a class="nav-link" href="#">What's new</a>
                         </li>
                         {% if current_user.is_authenticated %}
-                        <li class="nav-item">
+
                         <li style="padding:0" class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button"
                                data-bs-toggle="dropdown"> <i class="fi fi-rr-user"></i>
@@ -59,19 +69,18 @@
                                     current_user.name }}</b></a></li>
                             </ul>
                         </li>
-
-                        </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="fi fi-rr-shopping-cart"></i>
+                                Cart
                                 <span class="cart-counter badge bg-danger">0</span>
                             </a>
                         </li>
                     </ul>
                 </div>
 
-                <div class="container-fluid justify-content-end">
-                    <form method="get" action="/" class="form-inline d-flex align-items-center">
+                <div class=" justify-content-end">
+                    <form method="get" action="/" class="form-inline d-flex align-items-center search-form">
                         <input
                                 type="text"
                                 name="kw"
@@ -98,7 +107,15 @@
                 </div>
             </nav>
         </header>
+
         {% block content %} {% endblock content %}
+
+        <footer class="bg-body-tertiary text-center text-lg-start mt-5">
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+                © 2024 Copyright:
+                <a class="text-body" href="#">E-commerce App</a>
+            </div>
+        </footer>
     </main>
 </div>
 
