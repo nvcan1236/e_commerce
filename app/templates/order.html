@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{url_for('static', filename='style/order.css')}}">
+{% endblock extra_css %}
+{% block title %}
+Order
+{% endblock title %}
+{% block content %}
+<div class="container">
+    <h3 class="mt-5">Chi tiết đơn hàng</h3>
+    <table class="table mt-3">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Tên sản phẩm</th>
+            <th scope="col">Số lượng</th>
+            <th scope="col">Đơn giá</th>
+            <th scope="col">Thành tiền</th>
+        </tr>
+
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>iPhone 12 pro Max</td>
+            <td>1200000</td>
+            <td>1</td>
+            <td>1200000</td>
+        </tr>
+        <tr>
+            <th colspan="4" scope="col">Tổng cộng</th>
+            <td> 12000000 vnd</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="order-actions">
+        <a href="/order-result" class="btn primary mt-5 d-inline"> Thanh toán</a>
+    </div>
+</div>
+{% endblock content %} 

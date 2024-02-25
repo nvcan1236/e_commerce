@@ -31,7 +31,7 @@ Home Page
                 <div class="product-actions">
                     <button type="button" class="btn secondary" onclick="addToCart({{product.id}}, '{{product.name}}', {{product.price}})">Add to cart
                     </button>
-                    <button type="button" class="btn primary" onclick="buyNow('{{ product.id }}')">Buy now</button>
+                    <a href="/order" type="button" class="btn primary" onclick="buyNow('{{ product.id }}')">Buy now</a>
                 </div>
             </div>
         </div>

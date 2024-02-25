@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}
+Order Result
+{% endblock title %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{url_for('static', filename='style/order.css')}}">
+{% endblock extra_css %}
+
+{% block content %}
+<div class="container order-result">
+    <div class="result">
+        <img src="{{ url_for('static', filename='/images/success-order.jpg') }}" alt="">
+        <h3 class="mt-3">Đơn hàng đã được đặt</h3>
+        <p>Đơn hàng sẽ sớm đến tay bạn</p>
+    </div>
+    <div class="mt-3">
+        Trở về <a href="/">trang chủ </a>
+    </div>
+</div>
+{% endblock %}

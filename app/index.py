@@ -37,12 +37,29 @@ def index():
 
     return render_template('home.html', products=products, categories=categories)
 
+@app.route('/shop')
+def shop():
+    return render_template('shop.html')
 
 @app.route('/product/<int:product_id>')
 def product_detail(product_id):
     product = dao.get_product_by_id(product_id)
     return render_template('product_detail.html', product=product)
 
+
+@app.route('/order')
+def order():
+    return render_template('order.html')
+
+
+@app.route('/history')
+def history():
+    return render_template('history.html')
+
+
+@app.route('/order-result')
+def order_result():
+    return render_template('order-result.html')
 
 @app.route('/user_login', methods=['POST', 'GET'])
 def user_login():
@@ -55,7 +72,10 @@ def user_login():
         user = dao.authenticate_user(username=username, password=password, role=role)
         if user:
             login_user(user)
-            return redirect(url_for('index'))
+            if user.user_role == UserRoleEnum.SHOP:
+                return redirect(url_for('shop'))
+            else:
+                return redirect(url_for('index'))
     return render_template('user_login.html', user_role_enum_values=user_role_enum_values)
 
 

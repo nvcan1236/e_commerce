@@ -1,0 +1,38 @@
+.order {
+    padding: 0 20px;
+    border: 1px solid var(--secondary-color);
+    border-radius: 8px;
+}
+
+.order + .order {
+    margin-top: 20px;
+}
+.order-info {
+    padding: 20px;
+}
+
+.product {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.product + .product {
+    padding-top: 8px;
+    margin-top: 8px;
+    border-top: 1px dashed #ccc;
+}
+
+.product-img img{
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.order-actions {
+    border-top: 1px solid #ccc;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
