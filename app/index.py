@@ -5,6 +5,16 @@ from flask import render_template, request, session, redirect, url_for, jsonify
 from app.models import UserRoleEnum
 
 
+@app.context_processor
+def common_response():
+    cart = session.get('cart')
+    if cart is None:
+        cart = {}
+    return {
+        'cart_static': utils.count_cart(cart)
+    }
+
+
 @app.route('/api/cart', methods=['POST'])
 def add_cart():
     cart = session.get('cart')
@@ -37,9 +47,11 @@ def index():
 
     return render_template('home.html', products=products, categories=categories)
 
+
 @app.route('/shop')
 def shop():
     return render_template('shop.html')
+
 
 @app.route('/product/<int:product_id>')
 def product_detail(product_id):
@@ -57,9 +69,16 @@ def history():
     return render_template('history.html')
 
 
+@app.route('/cart')
+def cart():
+    cart = session.get('cart')
+    return render_template('cart.html', cart=cart)
+
+
 @app.route('/order-result')
 def order_result():
     return render_template('order-result.html')
+
 
 @app.route('/user_login', methods=['POST', 'GET'])
 def user_login():
@@ -83,6 +102,7 @@ def user_login():
 def user_logout():
     logout_user()
     return redirect(url_for('index'))
+
 
 
 @login.user_loader

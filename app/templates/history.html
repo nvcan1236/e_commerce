@@ -11,67 +11,107 @@ Lịch sử mua hàng
 
     <div class="history mt-5">
         <div class="order">
-        <div class="order-info">
-            <div class="product">
-                <div class="product-img">
-                    <img src="https://cdn.viettelstore.vn/Images/Product/ProductImage/1349547788.jpeg" alt="">
+            <div class="order-info">
+                <div class="product">
+                    <div class="product-img">
+                        <img src="https://cdn.viettelstore.vn/Images/Product/ProductImage/1349547788.jpeg" alt="">
+                    </div>
+                    <div class="product-name">
+                        Iphone 15 Pro Max
+                    </div>
+                    <div class="product-quantity">x1</div>
+                    <div class="product-price">
+                        20000000 vnd
+                    </div>
                 </div>
-                <div class="product-name">
-                    Iphone 15 Pro Max
-                </div>
-                <div class="product-quantity">x1</div>
-                <div class="product-price">
-                    20000000 vnd
+                <div class="product">
+                    <div class="product-img">
+                        <img src="https://cdn.viettelstore.vn/Images/Product/ProductImage/1349547788.jpeg" alt="">
+                    </div>
+                    <div class="product-name">
+                        Iphone 15 Pro Max
+                    </div>
+                    <div class="product-quantity">x1</div>
+                    <div class="product-price">
+                        20000000 vnd
+                    </div>
                 </div>
             </div>
-            <div class="product">
-                <div class="product-img">
-                    <img src="https://cdn.viettelstore.vn/Images/Product/ProductImage/1349547788.jpeg" alt="">
-                </div>
-                <div class="product-name">
-                    Iphone 15 Pro Max
-                </div>
-                <div class="product-quantity">x1</div>
-                <div class="product-price">
-                    20000000 vnd
+            <div class="order-actions">
+                <span>Đã giao hàng</span>
+                <div>
+                    <button class="btn primary mx-5" onclick="openModal()">Đánh giá sản phẩm</button>
+                    <b>2400000 vnd</b>
                 </div>
             </div>
         </div>
-        <div class="order-actions">
-            <span>Đã giao hàng</span>
-            <div>
-                <button class="btn primary mx-5">Đánh giá sản phẩm</button>
-                <b>2400000 vnd</b>
-            </div>
-        </div>
-    </div>
 
         <div class="order">
-        <div class="order-info">
-            <div class="product">
-                <div class="product-img">
-                    <img src="https://cdn.viettelstore.vn/Images/Product/ProductImage/1349547788.jpeg" alt="">
+            <div class="order-info">
+                <div class="product">
+                    <div class="product-img">
+                        <img src="https://cdn.viettelstore.vn/Images/Product/ProductImage/1349547788.jpeg" alt="">
+                    </div>
+                    <div class="product-name">
+                        Iphone 15 Pro Max
+                    </div>
+                    <div class="product-quantity">x1</div>
+                    <div class="product-price">
+                        20000000 vnd
+                    </div>
                 </div>
-                <div class="product-name">
-                    Iphone 15 Pro Max
-                </div>
-                <div class="product-quantity">x1</div>
-                <div class="product-price">
-                    20000000 vnd
-                </div>
-            </div>
 
-        </div>
-        <div class="order-actions">
-            <span>Đã giao hàng</span>
-            <div>
-                <button class="btn primary mx-5">Đánh giá sản phẩm</button>
-                <b>2400000 vnd</b>
+            </div>
+            <div class="order-actions">
+                <span>Đã giao hàng</span>
+                <div>
+                    <button class="btn primary mx-5" onclick="openModal()">Đánh giá sản phẩm</button>
+                    <b>2400000 vnd</b>
+                </div>
             </div>
         </div>
     </div>
+
+    <div class="review-modal hide" id="review-modal">
+        <div class="review-wrapper">
+            <h3>Đánh giá sản phẩm</h3>
+            <div class="list-review">
+                <div class="product-review">
+                    <div class="product-review-infor">
+                        <img src="https://cdn.viettelstore.vn/Images/Product/ProductImage/1349547788.jpeg" alt="">
+                        <div>
+                            <h4>Iphone 15 Pro Max</h4>
+                            <span>24000000 vnd</span>
+                        </div>
+                    </div>
+                    <form action="" class="product-review-form">
+                        <input type="text" class="product-review-input" placeholder="Đánh giá sản phẩm ...">
+                        <button class="btn primary">Gửi</button>
+                    </form>
+                </div>
+
+                <div class="product-review">
+                    <div class="product-review-infor">
+                        <img src="https://cdn.viettelstore.vn/Images/Product/ProductImage/1349547788.jpeg" alt="">
+                        <div>
+                            <h4>Iphone 15 Pro Max</h4>
+                            <span>24000000 vnd</span>
+                        </div>
+                    </div>
+                    <form action="" class="product-review-form">
+                        <input type="text" class="product-review-input" placeholder="Đánh giá sản phẩm ..." >
+                        <button class="btn primary">Gửi</button>
+                    </form>
+                </div>
+
+            </div>
+            <div class="modal-actions">
+                <button class="btn secondary close-modal" onclick="closeModal()">Close</button>
+            </div>
+        </div>
+
     </div>
-
-
 </div>
+
+<script src=" {{ url_for('static', filename='js/review.js') }}"></script>
 {% endblock content %} 

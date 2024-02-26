@@ -20,7 +20,7 @@ body {
 
 .btn {
     padding: 6px 24px;
-    border-radius: 999px;
+    border-radius: 6px;
 }
 
 .btn.primary {
