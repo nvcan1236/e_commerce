@@ -1,5 +1,5 @@
 # import login as login
-from flask_login import logout_user, login_user
+from flask_login import logout_user, login_user, current_user
 from app import app, dao, login, utils
 from flask import render_template, request, session, redirect, url_for, jsonify
 from app.models import UserRoleEnum
@@ -44,8 +44,10 @@ def index():
     kw = request.args.get('kw')
     products = dao.load_product(kw)
     categories = dao.load_category()
-
-    return render_template('home.html', products=products, categories=categories)
+    if current_user and current_user.user_role == UserRoleEnum.SHOP:
+        return render_template('shop.html', products=products, categories=categories)
+    else:
+        return render_template('home.html', products=products, categories=categories)
 
 
 @app.route('/shop')
@@ -56,7 +58,8 @@ def shop():
 @app.route('/product/<int:product_id>')
 def product_detail(product_id):
     product = dao.get_product_by_id(product_id)
-    return render_template('product_detail.html', product=product)
+    is_shop = current_user.user_role = UserRoleEnum.SHOP
+    return render_template('product_detail.html', product=product, is_shop=is_shop)
 
 
 @app.route('/order')
@@ -91,10 +94,7 @@ def user_login():
         user = dao.authenticate_user(username=username, password=password, role=role)
         if user:
             login_user(user)
-            if user.user_role == UserRoleEnum.SHOP:
-                return redirect(url_for('shop'))
-            else:
-                return redirect(url_for('index'))
+            return redirect(url_for('index'))
     return render_template('user_login.html', user_role_enum_values=user_role_enum_values)
 
 

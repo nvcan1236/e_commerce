@@ -1,16 +1,16 @@
-{% extends 'base.html' %}
+{% extends 'shop_base.html' if is_shop else 'base.html'  %}
 {% block title %}
 Details
 {% endblock title %}
 
 {% block content %}
 <div class="container">
-    <div class="row ">
+    <div class="row mt-3 {{ 'detail_product_shop' if is_shop}} ">
         <div class="col-md-6 detail-img">
             <img src="{{ product.image }}" class="img-fluid" alt="{{ product.name }}">
         </div>
         <div class="col-md-6 detail-info">
-            <h1>{{ product.name }} - Product Detail</h1>
+            <h1>{{ product.name }}</h1>
             <p>{{ product.description }}</p>
             <p>Price: ${{ product.price }}</p>
             <p class="detail-seller">Seller: <a href="#">{{ product.seller.username }}</a></p>
@@ -33,16 +33,28 @@ Details
                 <div class="review-item">
                     <div class="customer-review review-chat">
                         <div class="review-avatar">
-                            <img src="https://res.cloudinary.com/dbd7vfk12/image/upload/v1698833579/cld-sample.jpg" alt="">
+                            <img src="https://res.cloudinary.com/dbd7vfk12/image/upload/v1698833579/cld-sample.jpg"
+                                 alt="">
                         </div>
                         <div>
                             <div class="review-infor">
-                            <div class="review-author">canhnguyen</div>
-                            <div class="review-date">24/02/2024</div>
-                        </div>
-                        <div class="review-content">
-                            Sản phẩm chạy ổn định. Hài lòng
-                        </div>
+                                <div class="review-author">canhnguyen</div>
+                                <div class="review-date">24/02/2024</div>
+                            </div>
+                            <div class="d-flex">
+                                <div class="review-content">
+                                    Sản phẩm chạy ổn định. Hài lòng
+                                </div>
+                                {% if is_shop %}
+                                <div class="reply-btn" onclick="showFormReply(0)">
+                                    Phản hồi
+                                </div>
+                                {% endif %}
+                            </div>
+                            <form action="" class="mt-3 reply-form hide" id="0">
+                                <textarea cols='30'  rows="2"  placeholder="Nhập phản hồi ..."></textarea>
+                                <button class="btn primary">Gửi</button>
+                            </form>
                         </div>
                     </div>
                     <div class="reply-review review-chat">
@@ -58,16 +70,28 @@ Details
                 <div class="review-item">
                     <div class="customer-review review-chat">
                         <div class="review-avatar">
-                            <img src="https://res.cloudinary.com/dbd7vfk12/image/upload/v1698833548/samples/people/boy-snow-hoodie.jpg" alt="">
+                            <img src="https://res.cloudinary.com/dbd7vfk12/image/upload/v1698833548/samples/people/boy-snow-hoodie.jpg"
+                                 alt="">
                         </div>
                         <div>
                             <div class="review-infor">
                                 <div class="review-author">canhnguyen</div>
                                 <div class="review-date">24/02/2024</div>
                             </div>
-                            <div class="review-content">
-                                Nói chung thì cũng tạm chấp nhận được nhưng hy vong shop sẽ cải thiện những lỗi nhỏ
+                            <div class="d-flex align-center">
+                                <div class="review-content">
+                                    Nói chung thì cũng tạm chấp nhận được hy vong shop sẽ cải thiện những lỗi nhỏ
+                                </div>
+                                {% if is_shop %}
+                                <div class="reply-btn"  onclick="showFormReply(1)">
+                                    Phản hồi
+                                </div>
+                                {% endif %}
                             </div>
+                            <form action="" class="mt-3 reply-form hide" id="1">
+                                <textarea cols='30'  rows="2"  placeholder="Nhập phản hồi ..."></textarea>
+                                <button class="btn primary">Gửi</button>
+                            </form>
                         </div>
                     </div>
                     <div class="reply-review review-chat">
@@ -84,4 +108,6 @@ Details
         </div>
     </div>
 </div>
+
+<script src=" {{ url_for('static', filename='js/review.js') }}"></script>
 {% endblock %}

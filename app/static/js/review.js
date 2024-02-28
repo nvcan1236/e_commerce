@@ -10,3 +10,8 @@ function openModal() {
     if(modal.classList.contains('hide')) {
     }
 }
+
+function showFormReply(formId) {
+    const formReply = document.getElementById(formId)
+    formReply.classList.remove('hide')
+}
