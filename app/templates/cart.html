@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{url_for('static', filename='style/cart.css')}}">
+{% endblock extra_css %}
+{% block title %}
+Giỏ hàng
+{% endblock title %}
+{% block content %}
+<div class="container">
+    <h3 class="mt-5">Giỏ hàng</h3>
+    <div class="cart mt-3">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Sản phẩm</th>
+                <th scope="col">Số lượng</th>
+                <th scope="col">Đơn giá</th>
+                <th scope="col">Thành tiền</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for p in session['cart'].values() %}
+            <tr>
+                <th scope="row">{{ loop.index }}</th>
+                <td>{{ p['name'] }}</td>
+                <td>{{ p.quantity}}</td>
+                <td>{{ p.price}}</td>
+                <td>{{ p.quantity * p.price}}</td>
+            </tr>
+            {% endfor %}
+
+
+            </tbody>
+        </table>
+        <div class="cart-actions">
+            <button class="btn primary">Đặt hàng</button>
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock content %}

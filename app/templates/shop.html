@@ -1,12 +1,30 @@
-{% extends 'base.html' %}
-{% block extra_css %}
-<link rel="stylesheet" href="{{url_for('static', filename='style/order.css')}}">
-{% endblock extra_css %}
+{% extends 'shop_base.html' %}
 {% block title %}
-Shop View
+Trang bán hàng
 {% endblock title %}
 {% block content %}
-<div class="container">
-    <h3>Trang quản lý cửa hàng</h3>
+<div class="container product-list">
+    <h3 class="mt-5">Trang quản lý cửa hàng</h3>
+    <div class="row">
+        {% for product in products %}
+        <div style="padding:10px" class="col-sm-6 col-lg-4 col-xl-3">
+            <div style="padding:20px" class="card">
+                <a style="text-decoration: none" href="{{ url_for('product_detail', product_id=product.id) }}"
+                   class="card-link">
+                    <img src="{{ product.image }}" class="card-img-top product-img" alt="{{ product.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title product-name">{{ product.name }}</h5>
+                        <p class="card-text">{{ product.description }}</p>
+                        <p class="card-text">Price: ${{ product.price }}</p>
+                    </div>
+                </a>
+                <div class="product-actions">
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </div>
-{% endblock content %} 
+
+{% endblock content %}

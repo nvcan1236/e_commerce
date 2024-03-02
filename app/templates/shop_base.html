@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8"/>
     <meta
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <!-- flat icon cdn -->
     <link
             rel="stylesheet"
             href="https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css"
@@ -32,15 +30,11 @@
             rel="stylesheet"
             href="{{url_for('static', filename='style/product-detail.css')}}"
     />
-    {% block extra_css %} {% endblock extra_css %}
-    <title>{% block title %} {% endblock title %}</title>
+    <title>Trang cửa hàng</title>
 
 </head>
 <body>
 <div class="container-fluid px-0">
-    <!--    <div class="noti text-center py-1 fixed-top">-->
-    <!--        E-commerce - Nguyen Van Canh - Notification-->
-    <!--    </div>-->
     <main>
         <header>
             <nav class="navbar navbar-expand-sm bg-light">
@@ -51,14 +45,10 @@
                             <a class="nav-link" href="/">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Category</a>
+                            <a class="nav-link" href="/">Notifications</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Deals</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/history">History</a>
-                        </li>
+
+
                         {% if current_user.is_authenticated %}
 
                         <li style="padding:0" class="nav-item dropdown">
@@ -69,13 +59,6 @@
                                 <li><a class="dropdown-item" href="{{ url_for('user_logout') }}"><b>Sign out {{
                                     current_user.name }}</b></a></li>
                             </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="cart" class="nav-link">
-                                <i class="fi fi-rr-shopping-cart"></i>
-                                Cart
-                                <span class="cart-counter badge bg-danger">{{ cart_static['total_quantity'] }}</span>
-                            </a>
                         </li>
                     </ul>
                 </div>
@@ -109,7 +92,9 @@
             </nav>
         </header>
 
-        {% block content %} {% endblock content %}
+        {% block content %}
+
+        {% endblock content %}
 
         <footer class="bg-body-tertiary text-center text-lg-start mt-5">
             <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
