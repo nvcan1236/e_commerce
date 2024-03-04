@@ -33,12 +33,13 @@ Giỏ hàng
 
             </tbody>
         </table>
+
         <div class="cart-actions">
-            <button class="btn primary">Đặt hàng</button>
+            <a href="/order?detail=cart&from=cart" class="btn primary">Đặt hàng</a>
         </div>
     </div>
-
-
 </div>
 
+
+<script src=" {{ url_for('static', filename='js/cart.js') }}"></script>
 {% endblock content %}

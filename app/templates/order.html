@@ -20,22 +20,27 @@ Order
 
         </thead>
         <tbody>
+        {% for p in details.values() %}
         <tr>
-            <th scope="row">1</th>
-            <td>iPhone 12 pro Max</td>
-            <td>1200000</td>
-            <td>1</td>
-            <td>1200000</td>
+            <th scope="row">{{ loop.index }}</th>
+            <td>{{ p['name'] }}</td>
+            <td>{{ p.price}}</td>
+            <td>{{ p.quantity}}</td>
+            <td>{{ p.quantity * p.price}}</td>
         </tr>
+        {% endfor %}
+
         <tr>
             <th colspan="4" scope="col">Tổng cộng</th>
-            <td> 12000000 vnd</td>
+            <td> {{total}} vnd</td>
         </tr>
         </tbody>
     </table>
 
     <div class="order-actions">
-        <a href="/order-result" class="btn primary mt-5 d-inline"> Thanh toán</a>
+        <a onclick="buy({{ details }})" class="btn primary mt-5 d-inline"> Thanh toán</a>
     </div>
 </div>
+
+<script src=" {{ url_for('static', filename='js/cart.js') }}"></script>
 {% endblock content %} 
